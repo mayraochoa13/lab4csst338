@@ -12,7 +12,6 @@
         $backgroundImage = $imageURLs[array_rand($imageURLs)];
     } else{
          $backgroundImage = "./img/sea.jpg";
-         echo hola;
     }
 ?>
 
@@ -80,7 +79,7 @@
         <br>
         <form>
             
-            <input type="text" name="keyword" placeholder="Keyword" value>
+            <input type="text" name="keyword" placeholder="Keyword" value="">
             <br /><br />
             <div id = "layoutDiv">
                 <!--<input type="text" name="keyword" placeholder = "keyword" value="<?=$_GET['keyword']?>"/>-->
