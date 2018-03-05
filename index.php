@@ -1,6 +1,6 @@
 <?php
 //API call goes  here
-    $backgroundImage = "./img/sea.jpg";
+   $backgroundImage = "./img/sea.jpg";
     if(isset($_GET['keyword'])){
         include 'api/pixabayAPI.php';
         $keyword = $_GET['keyword'];
@@ -10,6 +10,9 @@
             $imageURLs = getImageURLs($_GET['keyword'], $_GET['layout']);
         }
         $backgroundImage = $imageURLs[array_rand($imageURLs)];
+    } else{
+         $backgroundImage = "./img/sea.jpg";
+         echo hola;
     }
 ?>
 
@@ -31,13 +34,14 @@
         <?php
         if(!isset($imageURLs)){
             echo "<h2> Type a keyword to display a slideshow <br /> with random images from Pixabay.com </h2>";
+            $backgroundImage = "./img/sea.jpg";
         } else {
         ?>
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!--<h1> I'm a regulat HTML tag inside the PHP else statement! </h1>-->
         <ol class="carousel-indicators">
             <?php
-                for($i=0; $i < 5; $i++){
+                for($i=0; $i < 7; $i++){
                     echo "<li data-target='#carousel-example-generic' data-slide-to='$i'";
                     echo ($i == 0)?" class='active'": "";
                     echo "></li>";
@@ -46,7 +50,7 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <?php
-                 for($i=0; $i<5; $i++){
+                 for($i=0; $i<7; $i++){
                      do{
                          $randomIndex = rand(0, count($imageURLs));
                      } while(!isset($imageURLs[$randomIndex]));
@@ -76,7 +80,7 @@
         <br>
         <form>
             
-            <input type="text" name="keyword" placeholder="Keyword" value="">
+            <input type="text" name="keyword" placeholder="Keyword" value>
             <br /><br />
             <div id = "layoutDiv">
                 <!--<input type="text" name="keyword" placeholder = "keyword" value="<?=$_GET['keyword']?>"/>-->
